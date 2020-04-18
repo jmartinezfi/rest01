@@ -1,0 +1,34 @@
+<beans:beans 
+    xmlns:security="http://www.springframework.org/schema/security" 
+    xmlns:beans="http://www.springframework.org/schema/beans" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:transaction="http://www.springframework.org/schema/tx" 
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd
+        http://mybatis.org/schema/mybatis-spring 
+        http://mybatis.org/schema/mybatis-spring.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<mvc:annotation-driven enable-matrix-variables="true">
+		<!-- Timeout en milisegundos, 30 seg -->
+		<mvc:async-support default-timeout="30000"></mvc:async-support>
+	</mvc:annotation-driven>
+
+	<context:component-scan base-package="sbs.sgc.service.controller.**,sbs.sgc.domain.core,sbs.sgc.domain.entity" />
+	<mvc:resources mapping="/public/**" location="/public/" />
+	<!-- FIN: Spring security -->
+
+</beans:beans>

@@ -1,0 +1,36 @@
+<beans:beans xmlns:security="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd
+        http://mybatis.org/schema/mybatis-spring 
+        http://mybatis.org/schema/mybatis-spring.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<mvc:annotation-driven enable-matrix-variables="true">
+		<mvc:async-support default-timeout="30000"></mvc:async-support>
+	</mvc:annotation-driven>
+
+	<context:component-scan base-package="sbs.service.web.simplerestservices.**" />
+	<mvc:resources mapping="/public/**" location="/public/" />
+
+	<context:annotation-config />
+
+	<!-- <mvc:cors> -->
+	<!-- <mvc:mapping path="/api_extern/**" allowed-origins="http://localhost:7070" allowed-methods="POST, GET, PUT, DELETE,HEAD" allow-credentials="false" -->
+	<!-- allowed-headers="Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization" -->
+	<!-- exposed-headers="Origin,Access-Control-Request-Method,Access-Control-Allow-Origin,Access-Control-Allow-Credentials" /> -->
+	<!-- </mvc:cors> -->
+	<!-- FIN: CORS -->
+
+</beans:beans>
+
+<!-- If you are creating rest service consumed by non-browser clients, you can disable csrf in your security config. <security:csrf disabled="true"/> -->
+

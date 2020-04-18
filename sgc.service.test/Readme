@@ -1,0 +1,30 @@
+# Esto para crear la carpeta en los nodos del WAS
+mkdir /var/log/app
+chgrp wasgroup /var/log/app
+chmod g+rwx /var/log/app
+
+# Este es el jndi 
+jdbc/COOPAC-DESA-DS
+
+    <library id="oracle-lib">
+		<fileset dir="F:\Code\Java\lib\" includes="ojdbc8.jar"/>
+	</library>
+	<applicationMonitor updateTrigger="mbean"/>
+	<dataSource id="jdbc/COOPAC-DESA-DS" jndiName="jdbc/COOPAC-DESA-DS">
+		<jdbcDriver libraryRef="oracle-lib"/>
+		<properties.oracle password="coopacdesa" url="jdbc:oracle:thin:@//racext4db:1521/PROD" user="coopac"/>
+	</dataSource>
+	
+========================================
+Para probar nuestro servico publicado en producción en desarrollo
+
+Esto no sirve
+1.- download the cert by opening the URL in a browser, click the lock icon in the browser's address bar.
+2.- Once you have a .cer file execute the below command
+	keytool -import -keystore C:\0.JAVA\jdk\8.172_64\jre\lib\security\cacerts -file f:\sbs.cer -alias sbs_coopac -storepass changeit
+
+	https://stackoverflow.com/questions/7913942/how-to-configure-spring-resttemplate-with-ssl-in-spring-mvc
+	
+Esto es lo que sirve	
+	https://www.baeldung.com/httpclient-ssl
+	The Spring RestTemplate with SSL (HttpClient 4.4)
